@@ -1,3 +1,7 @@
+pre {
+  white-space: break-spaces;
+}
+
 .page_wrapper {
   margin: 5rem auto;
   width: 80%;
@@ -41,7 +45,10 @@ input[type="text"] {
   position: relative;
   margin: 3rem 0;
   background: #9d1abc;
-  height: 14.75rem;
+  // height: 14.75rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 506px;
 }
 .tabs::before,
 .tabs::after {
@@ -77,15 +84,15 @@ input[type="text"] {
 .tab-content {
   position: absolute;
   z-index: 1;
-  top: 2.75em;
-  left: 0;
+  top: 0;
   right: 0;
   min-height: 100%;
-  padding: 1.618rem;
+  padding: 0 1rem;
   background: #fcee0c;
   color: #001eff;
   opacity: 0;
   transition: all 0.35s;
+  max-width: 400px;
 }
 .tab-switch:checked + .tab-label {
   background: #fcee0c;

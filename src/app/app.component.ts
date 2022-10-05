@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
   handleChange(event: string) {
     this.testTypesToShow.clear();
 
-    const ids = event.replace(' ', '').split(',');
+    const ids = event.replace(/\s/g, '').split(',');
 
     ids.forEach((id) => {
       const match = this.findTestTypeNameById(id, this.testTypes);

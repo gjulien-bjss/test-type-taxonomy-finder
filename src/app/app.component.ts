@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
       const match = this.findTestTypeNameById(id, this.testTypes);
       if (match) {
         const { suggestedTestTypeDisplayName, testTypeName, name } = match;
-        delete match.testCodes;
+        // delete match.testCodes;
         delete match.nextTestTypesOrCategories;
         const final_name =
           suggestedTestTypeDisplayName || testTypeName || name || '-';

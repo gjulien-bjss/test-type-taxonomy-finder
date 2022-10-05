@@ -45,7 +45,6 @@ input[type="text"] {
   position: relative;
   margin: 3rem 0;
   background: #9d1abc;
-  // height: 14.75rem;
   display: flex;
   flex-direction: column;
   min-height: 506px;
@@ -70,8 +69,8 @@ input[type="text"] {
   line-height: 2.75em;
   height: 3em;
   padding: 0 1.618em;
-  background: #fcee0c;
-  border-right: 0.125rem solid #16a085;
+  background: #e2d305;
+  border-bottom: 0.125rem solid #16a085;
   color: #001eff;
   cursor: pointer;
   top: 0;
@@ -101,7 +100,7 @@ input[type="text"] {
   border-right: 0.125rem solid #001eff;
   transition: all 0.35s;
   z-index: 1;
-  top: -0.0625rem;
+  top: -0.1625rem;
 }
 .tab-switch:checked + label + .tab-content {
   z-index: 2;

@@ -9,9 +9,9 @@ import { take } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   title = 'test-type-taxonomy-finder';
-  testName: string = '';
   testTypes?: any;
-  currentTest: any;
+  error = '';
+  testTypesToShow = new Map<string, any>();
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
@@ -25,26 +25,30 @@ export class AppComponent implements OnInit {
           this.testTypes = testTypes;
         },
         error: () => {
-          this.testName = 'Could not get the information for github...';
+          this.error = 'Could not get the information for github...';
           this.testTypes = undefined;
         },
       });
   }
 
   handleChange(event: string) {
-    const match = this.findTestTypeNameById(event, this.testTypes);
-    if (match) {
-      const { suggestedTestTypeDisplayName, testTypeName, name } = match;
-      delete match.testCodes;
-      delete match.nextTestTypesOrCategories;
-      this.currentTest = match;
-      const final_name =
-        suggestedTestTypeDisplayName || testTypeName || name || '-';
-      this.testName = final_name;
-    } else {
-      this.testName = 'Invalid test type id';
-      this.currentTest = undefined;
-    }
+    this.testTypesToShow.clear();
+
+    const ids = event.replace(' ', '').split(',');
+
+    ids.forEach((id) => {
+      const match = this.findTestTypeNameById(id, this.testTypes);
+      if (match) {
+        const { suggestedTestTypeDisplayName, testTypeName, name } = match;
+        delete match.testCodes;
+        delete match.nextTestTypesOrCategories;
+        const final_name =
+          suggestedTestTypeDisplayName || testTypeName || name || '-';
+        this.testTypesToShow.set(final_name, match);
+      } else {
+        id && this.testTypesToShow.set(id, 'Not found.');
+      }
+    });
   }
 
   findTestTypeNameById(id: string, testTypes: Array<any>): any | undefined {

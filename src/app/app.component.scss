@@ -107,3 +107,38 @@ input[type="text"] {
   opacity: 1;
   transition: all 0.35s;
 }
+
+.party_time:hover {
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: none;
+  animation-play-state: running;
+  animation-name: party-time-text;
+}
+
+@keyframes party-time-text {
+  0% {
+    color: red;
+  }
+  16.6667% {
+    color: #ff0;
+  }
+  33.3333% {
+    color: lime;
+  }
+  50% {
+    color: cyan;
+  }
+  66.6667% {
+    color: blue;
+  }
+  83.3333% {
+    color: #f0f;
+  }
+  100% {
+    color: red;
+  }
+}

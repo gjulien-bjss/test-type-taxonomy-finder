@@ -1,0 +1,35 @@
+<div class="page_wrapper">
+  <input
+    id="search-input"
+    #searchbox
+    class="neonText party_time"
+    type="text"
+    (input)="handleChange(searchbox.value)"
+    placeholder="Enter test type ids comma separated"
+  />
+
+  <p *ngIf="error">{{ error }}</p>
+
+  <div *ngIf="testTypesToShow.size" class="wrapper">
+    <div class="tabs">
+      <div
+        *ngFor="let test of testTypesToShow.keys(); let i = index"
+        class="tab"
+      >
+        <input
+          [id]="'tab-' + i"
+          type="radio"
+          [checked]="i === 0"
+          name="css-tabs"
+          class="tab-switch"
+        />
+        <label [for]="'tab-' + i" class="tab-label party_time">{{
+          test
+        }}</label>
+        <div class="tab-content">
+          <pre>{{ testTypesToShow.get(test) | json }}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
